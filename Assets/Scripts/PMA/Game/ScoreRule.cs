@@ -6,6 +6,8 @@ namespace PMA.Game
 {
     public abstract class ScoreRule : ScriptableObject
     {
+        [SerializeField] private string ruleName;
+        public string RuleName => ruleName;
         public abstract void Init();
         public abstract int Score(List<CardSO> compareCard);
 

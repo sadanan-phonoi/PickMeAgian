@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25aee7530a9e198488b421226b582e1b, type: 3}
   m_Name: ComboScore
   m_EditorClassIdentifier: 
+  ruleName: Combo !
+  comboMax: 3

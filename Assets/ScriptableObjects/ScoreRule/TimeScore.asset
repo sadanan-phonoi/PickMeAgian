@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e2930691c671142853e3adfd6b67b1, type: 3}
   m_Name: TimeScore
   m_EditorClassIdentifier: 
+  ruleName: Time Score !
+  maxScore: 10
