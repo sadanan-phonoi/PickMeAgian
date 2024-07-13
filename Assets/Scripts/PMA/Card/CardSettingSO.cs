@@ -7,21 +7,23 @@ namespace PMA.Card
     [CreateAssetMenu(fileName = "New CardSettingSO", menuName = "ScriptableObjects/CardSettingSO")]
     public class CardSettingSO : ScriptableObject
     {
+        [SerializeField] private Sprite backCard;
         [SerializeField] private CardSO[] card; 
         public int CardValue => card.Length;
-
+        public Sprite BackCard => backCard;
         public List<CardSO> GetCardDeck(StageSetting stageSetting)
         {
-            var totalCard = stageSetting.TotalCard;
+            var cardOpen = stageSetting.TotalCard / stageSetting.CardCompareValue;
             var cardDeck = new List<CardSO>();
             
-            if(totalCard>CardValue)
+            if(cardOpen > CardValue)
             {
                 Debug.LogError("StageSetting X Y CardCompareValue is not match with cardSetting");
                 return new List<CardSO>();
             } 
-            for (int i = 0; i < totalCard; i++)
+            for (int i = 0; i < cardOpen; i++)
             {
+                cardDeck.Add(card[i]);
                 cardDeck.Add(card[i]);
             } 
             return cardDeck;

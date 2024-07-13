@@ -9,6 +9,7 @@ namespace PMA.Game
     {
         [SerializeField] private GameSetting gameSetting;
         [SerializeField] private GamePanel gamePanel;
+        [SerializeField] private GamePlay gamePlay;
 
         private GameStage _stageSelected;
         private void Start()
@@ -28,11 +29,11 @@ namespace PMA.Game
                 gamePanel.ShowDialogOk(GameText.NOTICE,GameText.PLEASE_SELECT_STAGE);
                 return;
             }
-            gamePanel.SetPanel(GameEnum.EGamePanel.GAMEPLAY_PANEL);
+            gamePlay.Init(_stageSelected);
         }
         public void OnButtonClick_GameResume()
         {
-            
+            gamePlay.Resume();
         }
     }
 }

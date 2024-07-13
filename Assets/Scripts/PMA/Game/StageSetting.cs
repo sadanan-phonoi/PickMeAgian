@@ -13,6 +13,6 @@ namespace PMA.Game
         public int CardValueX => cardValueX;
         public int CardValueY => cardValueY;
         public int CardCompareValue => cardCompareValue; 
-        public int TotalCard => cardValueX * cardValueY / cardCompareValue;
+        public int TotalCard => cardValueX * cardValueY;
     }
 }

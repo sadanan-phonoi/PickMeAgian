@@ -19,6 +19,7 @@ namespace PMA.Menu
         {
             _info = gameStage;
             text.text = _info.GetStageName;
+            selectedImage.gameObject.SetActive(false);
         }
 
         public void OnButtonClick()

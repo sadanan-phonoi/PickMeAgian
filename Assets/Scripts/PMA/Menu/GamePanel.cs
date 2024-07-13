@@ -34,6 +34,10 @@ namespace PMA.Menu
                 p.panelObject.SetActive(p.panelType == type);
             }
         } 
+        public void SetPanel(int panel)
+        {
+            SetPanel((GameEnum.EGamePanel)panel);
+        } 
         public void ShowDialogOk(string header,string message, Action<EDialogType> callback = null)
         {
             if(dialogOk!=null)

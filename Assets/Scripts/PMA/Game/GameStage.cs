@@ -11,6 +11,8 @@ namespace PMA.Game
         [SerializeField] private CardSettingSO cardSetting; 
         [SerializeField] private ScoreRule[] scoreRule; 
         public string GetStageName => stageSetting.StageName;
+        public StageSetting StageSetting => stageSetting;
+        public CardSettingSO CardSetting => cardSetting;
         public ScoreRule[] ScoreRule => scoreRule;
         public void OnValidate()
         {
@@ -33,6 +35,10 @@ namespace PMA.Game
                 totalScore += rule.Score(compareCard);
             } 
             return totalScore;
+        }
+        public List<CardSO> GetCardDeck()
+        {
+            return cardSetting.GetCardDeck(stageSetting);
         }
     }
 }
