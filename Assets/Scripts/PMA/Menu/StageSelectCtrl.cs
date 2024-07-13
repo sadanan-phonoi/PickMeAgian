@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using PMA.Event;
 using PMA.Game;
 using TMPro;
 using UnityEngine; 
@@ -18,6 +20,7 @@ namespace PMA.Menu
         [SerializeField] private StageInfoTab stageInfoTabPrefab;
         [SerializeField] private Transform targetStageInfo;  
         private List<StageInfoTab> _listOfStageInfoTabs = new List<StageInfoTab>();
+        
         void Start()
         { 
             stageSelectTabPrefab.gameObject.SetActive(false);
@@ -63,6 +66,7 @@ namespace PMA.Menu
                 tab.gameObject.SetActive(true);
                 _listOfStageInfoTabs.Add(tab);
             }
+            GameEvent.OnStageSelected?.Invoke(info);
         }
 
         void DisableStageSelect()
