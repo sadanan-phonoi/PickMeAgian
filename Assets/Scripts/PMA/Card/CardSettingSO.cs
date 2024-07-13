@@ -12,12 +12,12 @@ namespace PMA.Card
 
         public List<CardSO> GetCardDeck(GameSetting gameSetting)
         {
-            var totalCard = (gameSetting.CardValueX * gameSetting.CardValueY)/gameSetting.CardCompareValue;
-            List<CardSO> cardDeck = new List<CardSO>();
+            var totalCard = gameSetting.TotalCard;
+            var cardDeck = new List<CardSO>();
             
             if(totalCard>CardValue)
             {
-                Debug.Log("GameSetting X Y CardCompareValue is not match");
+                Debug.LogError("GameSetting X Y CardCompareValue is not match with cardSetting");
                 return new List<CardSO>();
             } 
             for (int i = 0; i < totalCard; i++)
