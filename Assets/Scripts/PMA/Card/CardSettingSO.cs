@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic; 
 using PMA.Game;
 using UnityEngine;
@@ -25,6 +26,15 @@ namespace PMA.Card
                 cardDeck.Add(card[i]);
             } 
             return cardDeck;
+        }
+
+        public void OnValidate()
+        {
+            foreach (var c in card)
+            {
+                if(c.CardId == 0)
+                    Debug.LogError("Card Id Not Set");
+            }
         }
     }
 }

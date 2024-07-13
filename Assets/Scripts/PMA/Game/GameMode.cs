@@ -15,7 +15,7 @@ namespace PMA.Game
         {
             if(cardSetting == null) return;
             if(gameSetting.TotalCard > cardSetting.CardValue)
-                Debug.LogWarning("GameSetting X Y CardCompareValue is not match with cardSetting");
+                Debug.LogError("GameSetting X Y CardCompareValue is not match with cardSetting");
         }
 
         public void Init()

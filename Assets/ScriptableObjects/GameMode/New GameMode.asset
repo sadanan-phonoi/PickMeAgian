@@ -15,6 +15,8 @@ MonoBehaviour:
   gameSetting:
     cardValueX: 2
     cardValueY: 2
-    cardCompareValue: 1
-  cardSetting: {fileID: 0}
-  scoreRule: []
+    cardCompareValue: 2
+  cardSetting: {fileID: 11400000, guid: 51f5de2752f46154bbcdeee4d6fcd0cd, type: 2}
+  scoreRule:
+  - {fileID: 11400000, guid: 48a4d11636ab2cf45bcc6befe06c4806, type: 2}
+  - {fileID: 11400000, guid: d02daacd7c47fdc4cb7ca255662f8951, type: 2}

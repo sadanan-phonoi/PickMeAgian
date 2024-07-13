@@ -13,12 +13,7 @@ namespace PMA.Game
         {
             for (int i = 0; i < compareCard.Count - 1; i++)
             {
-                if (compareCard[i].CardId == compareCard[i + 1].CardId)
-                    return true;
-                else
-                {
-                    return false;
-                }
+                return compareCard[i].CardId == compareCard[i + 1].CardId;
             } 
             return false;
         }
