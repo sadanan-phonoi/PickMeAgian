@@ -9,7 +9,7 @@ namespace PMA.Card
     {
         [SerializeField] private Sprite backCard;
         [SerializeField] private CardSO[] card; 
-        public int CardValue => card.Length;
+        public int CardValue => card.Length*2;
         public Sprite BackCard => backCard;
         public List<CardSO> GetCardDeck(StageSetting stageSetting)
         {
@@ -25,6 +25,7 @@ namespace PMA.Card
             {
                 cardDeck.Add(card[i]);
                 cardDeck.Add(card[i]);
+                Debug.Log("Add " + card[i].CardId);
             } 
             return cardDeck;
         }

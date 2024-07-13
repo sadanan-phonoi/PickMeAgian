@@ -12,16 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed20089aab6405141a2b9445b469893f, type: 3}
   m_Name: CardSetting 1
   m_EditorClassIdentifier: 
+  backCard: {fileID: 0}
   card:
   - cardId: 1
-    cardImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    cardImage: {fileID: 21300000, guid: 7bfbfe288750c6043bdcfea4e332450a, type: 3}
   - cardId: 2
-    cardImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    cardImage: {fileID: 21300000, guid: c0146259b37d95a4e8c60f4d93c5ad8c, type: 3}
   - cardId: 3
-    cardImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    cardImage: {fileID: 21300000, guid: 96d2052639709af41a5c0a611e120882, type: 3}
   - cardId: 4
-    cardImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    cardImage: {fileID: 21300000, guid: 989916cae1535dd4ca975b924c1c27d9, type: 3}
   - cardId: 5
-    cardImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    cardImage: {fileID: 21300000, guid: c0dba5cc24a02ae4a87078cf63788fe1, type: 3}
   - cardId: 6
-    cardImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    cardImage: {fileID: 21300000, guid: 82518abbdd45a2045874ce41aafd95ca, type: 3}
+  - cardId: 7
+    cardImage: {fileID: 21300000, guid: ced3f5e33f9e1f24698d1d7c2b51ff32, type: 3}
+  - cardId: 8
+    cardImage: {fileID: 21300000, guid: b7e29724bd201ff4cb77e7d9473a2f3f, type: 3}
+  - cardId: 9
+    cardImage: {fileID: 21300000, guid: 04143754d851e6544bfabc4c67ca3664, type: 3}
+  - cardId: 10
+    cardImage: {fileID: 21300000, guid: c5eabe513bc470041972ff7aa463022f, type: 3}

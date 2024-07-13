@@ -7,15 +7,18 @@ namespace PMA.Game
 {
     public class Card : MonoBehaviour
     {
-        [SerializeField] private Image image; 
-        
+        [SerializeField] private Image image;  
+
         public Action<Card> OnCardClick;
         private CardSO _cardInfo;
         public CardSO CardInfo => _cardInfo;
+        private Sprite _backCard;
         public void Init(CardSO info,Sprite backCard)
         {
             _cardInfo = info;
-            image.sprite = backCard;
+            _backCard = backCard;
+            
+            image.sprite = _backCard;
             
             foreach (var cardId in Player.Instance.CardSelectedId)
             {
@@ -24,17 +27,20 @@ namespace PMA.Game
                     OpenCard();
                     break;
                 }
-            }
+            } 
         } 
         public void OnButtonClick()
         {
-            OnCardClick?.Invoke(this);
             OpenCard();
+            OnCardClick?.Invoke(this); 
         }
-
         public void OpenCard()
         {
             image.sprite = _cardInfo.CardImage;
+        }
+        public void CloseCard()
+        {
+            image.sprite = _backCard; 
         }
         public void Disable()
         {

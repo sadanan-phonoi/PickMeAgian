@@ -16,3 +16,6 @@ MonoBehaviour:
   - stageId: 1
     difficultyLevel: 0
     stage: {fileID: 11400000, guid: adbe91de0ca453e43a99afa7f565733e, type: 2}
+  - stageId: 2
+    difficultyLevel: 1
+    stage: {fileID: 11400000, guid: 3c7a339c6d6dbaa4e970733f4ab0d8c0, type: 2}

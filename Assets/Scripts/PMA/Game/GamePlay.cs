@@ -89,30 +89,34 @@ namespace PMA.Game
             if (_cardSelected.Count >= _gameStage.StageSetting.CardCompareValue)
             {
                 List<CardSO> compareCard = new List<CardSO>();
-                foreach (var card in _cardSelected) 
-                    compareCard.Add(card.CardInfo); 
-                
+                foreach (var card in _cardSelected)
+                    compareCard.Add(card.CardInfo);
+
                 int score = _gameStage.GetScore(compareCard);
-                if (score == 0)
-                {
-                    foreach (var card in _cardSelected) 
-                        card.Disable();
-                    _cardSelected.Clear(); 
-                }
-                else
+                if (score != 0)
                 {
                     Player.Instance.IncreaseScore(score);
                     Player.Instance.SetCardSelectedId(_cardSelected[0].CardInfo.CardId);
+
+                    foreach (var card in _cardSelected)
+                        card.Disable();
                 }
+                else
+                {
+                    foreach (var card in _cardSelected)
+                        card.CloseCard();
+                }
+
                 Player.Instance.IncreaseTurn();
-                
+
+                _cardSelected.Clear();
                 CheckPlayerWin();
             } 
         }
         
         private void CheckPlayerWin()
         {
-            if (Player.Instance.GetCardSelectedCount >= _gameStage.StageSetting.TotalCard)
+            if (Player.Instance.GetCardSelectedCount*2 >= _gameStage.StageSetting.TotalCard)
             {
                 gamePanel.ShowDialogOk(GameText.WIN, 
                     GameText.YOUR_SCORE + Player.Instance.Score,

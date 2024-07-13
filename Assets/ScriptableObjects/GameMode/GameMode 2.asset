@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0f59c660d3b224dbb1d70a7f29f59d, type: 3}
+  m_Name: GameMode 2
+  m_EditorClassIdentifier: 
+  stageSetting:
+    stageName: Stage 2
+    cardValueX: 4
+    cardValueY: 4
+    cardCompareValue: 2
+  cardSetting: {fileID: 11400000, guid: 51f5de2752f46154bbcdeee4d6fcd0cd, type: 2}
+  scoreRule:
+  - {fileID: 11400000, guid: 48a4d11636ab2cf45bcc6befe06c4806, type: 2}
+  - {fileID: 11400000, guid: d02daacd7c47fdc4cb7ca255662f8951, type: 2}

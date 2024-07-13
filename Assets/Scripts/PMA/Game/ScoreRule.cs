@@ -13,7 +13,7 @@ namespace PMA.Game
 
         protected bool IsCompare(List<CardSO> compareCard)
         {
-            for (int i = 0; i <= compareCard.Count - 1; i++)
+            for (int i = 0; i < compareCard.Count - 1; i++)
             {
                 if (compareCard[i].CardId != compareCard[i+1].CardId)
                     return false; 
