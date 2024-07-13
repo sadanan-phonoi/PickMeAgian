@@ -1,20 +1,21 @@
-using System;
 using System.Collections.Generic;
 using PMA.Card;
 using UnityEngine;
 
 namespace PMA.Game
 { 
-    [CreateAssetMenu(fileName = "New GameMode", menuName = "ScriptableObjects/GameMode")]
-    public class GameMode : ScriptableObject
+    [CreateAssetMenu(fileName = "New GameStage", menuName = "ScriptableObjects/GameStage")]
+    public class GameStage : ScriptableObject
     {
-        [SerializeField] private GameSetting gameSetting;
+        [SerializeField] private StageSetting stageSetting;
         [SerializeField] private CardSettingSO cardSetting; 
         [SerializeField] private ScoreRule[] scoreRule; 
+        public string GetStageName => stageSetting.StageName;
+        public ScoreRule[] ScoreRule => scoreRule;
         public void OnValidate()
         {
             if(cardSetting == null) return;
-            if(gameSetting.TotalCard > cardSetting.CardValue)
+            if(stageSetting.TotalCard > cardSetting.CardValue)
                 Debug.LogError("GameSetting X Y CardCompareValue is not match with cardSetting");
         }
 

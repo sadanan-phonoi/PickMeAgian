@@ -1,16 +1,25 @@
+using System.Collections.Generic;
+using PMA.Enum;
 using UnityEngine;
 
 namespace PMA.Game
 {
+    [CreateAssetMenu(fileName = "New GameSetting", menuName = "ScriptableObjects/GameSetting")]
+    public class GameSetting : ScriptableObject
+    { 
+        [SerializeField] private List<StageInfo> stageInfoList;
+        public List<StageInfo> StageInfoList => stageInfoList;
+    }
+
     [System.Serializable]
-    public class GameSetting
+    public class StageInfo
     {
-        [SerializeField] private int cardValueX = 2;
-        [SerializeField] private int cardValueY = 2;
-        [SerializeField] private int cardCompareValue = 2; 
-        public int CardValueX => cardValueX;
-        public int CardValueY => cardValueY;
-        public int CardCompareValue => cardCompareValue; 
-        public int TotalCard => cardValueX * cardValueY / cardCompareValue;
+        [SerializeField] private int stageId;
+        [SerializeField] private GameEnum.EDifficultyLevel difficultyLevel;
+        [SerializeField] private GameStage stage;
+
+        public int StageId => stageId;
+        public GameEnum.EDifficultyLevel DifficultyLevel => difficultyLevel;
+        public GameStage Stage => stage;
     }
 }
