@@ -5,6 +5,7 @@ using PMA.Enum;
 using PMA.Event;
 using PMA.Menu;
 using PMA.Player;
+using PMA.Sound;
 using TMPro;
 using UnityEngine; 
 
@@ -114,6 +115,7 @@ namespace PMA.Game
                 int score = _gameStageSo.GetScore(compareCard);
                 if (score != 0)
                 {
+                    GameEvent.PlaySoundEvent(SoundKey.SOUND_MATCH);
                     Player.Player.Instance.IncreaseScore(score); 
                     Player.Player.Instance.SetCardSelected(info.CardInfo);
                     foreach (var card in _cardSelected)
@@ -121,6 +123,7 @@ namespace PMA.Game
                 }
                 else
                 {
+                    GameEvent.PlaySoundEvent(SoundKey.SOUND_UN_MATCH);
                     foreach (var card in _cardSelected)
                         card.CloseCard();
                 }
@@ -129,7 +132,11 @@ namespace PMA.Game
 
                 _cardSelected.Clear();
                 CheckGameEnd();
-            } 
+            }
+            else
+            { 
+                GameEvent.PlaySoundEvent(SoundKey.SOUND_FLIPPING);
+            }
              
         }
         
@@ -146,6 +153,7 @@ namespace PMA.Game
                         GameEvent.OnGameEnd?.Invoke();
                     });
                 Disable();
+                GameEvent.PlaySoundEvent(SoundKey.SOUND_WIN);
             }
              
         }

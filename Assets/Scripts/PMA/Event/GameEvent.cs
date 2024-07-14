@@ -11,5 +11,7 @@ namespace PMA.Event
         
         public static Action<int> OnScoreChanged;
         public static Action<int> OnTurnIncrease;
+
+        public static Action<string> PlaySoundEvent;
     }
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe225748d2a817849a6d84da90cdb0d6, type: 3}
+  m_Name: AudioControllerSO
+  m_EditorClassIdentifier: 
+  Sounds:
+  - key: SOUND_KEY_MATCH
+    soundMusic: {fileID: 8300000, guid: 242509c6db6bb6f4d9ca75454c81ced1, type: 3}
+  - key: SOUND_KEY_FLIPPING
+    soundMusic: {fileID: 8300000, guid: 6cb7b8b842b4f2f4d91cb2ba97afc671, type: 3}
+  - key: SOUND_KEY_UN_MATCH
+    soundMusic: {fileID: 8300000, guid: dd6b7c099c59fb7499f07d5a8971df90, type: 3}
+  - key: SOUND_KEY_WIN
+    soundMusic: {fileID: 8300000, guid: 2b454de16268feb478162694cd72fa44, type: 3}

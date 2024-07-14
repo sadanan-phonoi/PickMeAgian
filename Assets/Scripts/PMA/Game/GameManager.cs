@@ -1,5 +1,5 @@
 using PMA.Event;
-using PMA.Menu;
+using PMA.Menu; 
 using UnityEngine;
 
 namespace PMA.Game
@@ -9,19 +9,25 @@ namespace PMA.Game
         [SerializeField] private GameSettingSO gameSettingSo;
         [SerializeField] private GamePanel gamePanel;
         [SerializeField] private GamePlay gamePlay;
-
+        [SerializeField] private AudioSource audioSource;
+        
         private GameStageSO _stageSoSelected;
         private void Start()
         {
             gamePanel.Init(gameSettingSo);
-            
+            gameSettingSo.Init(audioSource);
             SubscribeGameEnd();
             GameEvent.OnStageSelected += SubscribeStageSelected;
             GameEvent.OnGameStart += SubscribeGameStart;
             GameEvent.OnGameEnd += SubscribeGameEnd;
+            GameEvent.PlaySoundEvent += SubscribePlaySound;
         }
 
         #region GameEvent 
+        private void SubscribePlaySound(string key)
+        { 
+            gameSettingSo.AudioController.PlaySound(key);
+        }
         private void SubscribeStageSelected(GameStageSO stageSoInfo)
         {
             _stageSoSelected = stageSoInfo; 
