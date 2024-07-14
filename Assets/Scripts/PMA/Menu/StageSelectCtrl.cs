@@ -61,6 +61,11 @@ namespace PMA.Menu
             stageTitle.text = info.GetStageName;
             stageDifficulty.text = GameText.STAGE_DIFFICULTY +info.StageDifficulty;
             
+            var t = Instantiate(stageInfoTabPrefab, targetStageInfo);
+            t.Init(info.StageSetting);
+            t.gameObject.SetActive(true);
+            _listOfStageInfoTabs.Add(t);
+            
             foreach (var rule in info.ScoreRule)
             {
                 var tab = Instantiate(stageInfoTabPrefab, targetStageInfo);

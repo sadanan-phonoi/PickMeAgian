@@ -8,17 +8,21 @@ namespace PMA.Card
     public class CardSettingSO : ScriptableObject
     {
         [SerializeField] private Sprite backCard;
-        [SerializeField] private CardSO[] card; 
-        public int CardValue => card.Length*2;
+        [SerializeField] private Sprite [] cardImage;
+        [SerializeField] private List<Card> card; 
+        public int CardValue => card.Count;
         public Sprite BackCard => backCard;
-        public List<CardSO> GetCard => card.ToList(); 
+        public List<Card> GetCard => card.ToList(); 
+        
+#if UNITY_EDITOR
         public void OnValidate()
-        {
-            foreach (var c in card)
+        { 
+            card = new List<Card>();
+            for (int i = 0; i < cardImage.Length; i++)
             {
-                if(c.CardId == 0)
-                    Debug.LogError("Card Id Not Set");
-            }
+                card.Add(new Card(i+1,cardImage[i]));
+            }  
         }
+#endif
     }
 }

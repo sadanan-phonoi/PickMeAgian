@@ -17,13 +17,18 @@ namespace PMA.Game
         public CardSettingSO CardSetting => cardSetting;
         public StageSetting StageSetting => stageSetting;
         public ScoreRule[] ScoreRule => scoreRule;
+        
+#if UNITY_EDITOR
         public void OnValidate()
         {
             if(cardSetting == null) return;
             if(stageSetting == null) return;
-            if(stageSetting.TotalCard > cardSetting.CardValue)
-                Debug.LogError(GameText.WARNING_STATE_SETTING); 
-        } 
+            if(stageSetting.TotalCard > cardSetting.CardValue*2)
+                Debug.LogError(GameText.WARNING_STATE_SETTING 
+                               + stageSetting.TotalCard/2
+                               + " Current Card Count " + cardSetting.CardValue); 
+        }  
+#endif
         public void Init()
         {
             foreach (var rule in scoreRule)
@@ -31,7 +36,7 @@ namespace PMA.Game
                 rule.Init();
             }
         }
-        public int GetScore(List<CardSO> compareCard)
+        public int GetScore(List<PMA.Card.Card> compareCard)
         { 
             var totalScore = 0; 
             foreach (var rule in scoreRule)
@@ -40,21 +45,25 @@ namespace PMA.Game
             } 
             return totalScore;
         }
-        public List<CardSO> GetCardDeck()
+        public List<PMA.Card.Card> GetCardDeck()
         {  
             var totalCardOpen = stageSetting.TotalCard / stageSetting.CardCompareValue;
-            var cardDeck = new List<CardSO>();
+            var cardDeck = new List<PMA.Card.Card>();
             var card = cardSetting.GetCard;
             
-            if(totalCardOpen > cardSetting.CardValue)
+            if(totalCardOpen > cardSetting.CardValue*2)
             {
-                Debug.LogError(GameText.WARNING_STATE_SETTING); 
-                return new List<CardSO>();
+                Debug.LogError(GameText.WARNING_STATE_SETTING 
+                               + stageSetting.TotalCard/2
+                               + "Current Card Count " + cardSetting.CardValue); 
+                return new List<PMA.Card.Card>();
             } 
             for (int i = 0; i < totalCardOpen; i++)
             {
-                cardDeck.Add(card[i]);
-                cardDeck.Add(card[i]); 
+                for (int j = 0; j < stageSetting.CardCompareValue; j++)
+                {
+                    cardDeck.Add(card[i]);
+                }
             } 
             return cardDeck; 
         }

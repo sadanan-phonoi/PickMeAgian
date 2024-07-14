@@ -107,9 +107,9 @@ namespace PMA.Game
             _cardSelected.Add(info);
             if (_cardSelected.Count >= _gameStageSo.StageSetting.CardCompareValue)
             {
-                List<CardSO> compareCard = new List<CardSO>();
+                List<PMA.Card.Card> compareCard = new List<PMA.Card.Card>();
                 foreach (var card in _cardSelected)
-                    compareCard.Add(card.CardInfo.CardSo);
+                    compareCard.Add(card.CardInfo.Card);
 
                 int score = _gameStageSo.GetScore(compareCard);
                 if (score != 0)
@@ -151,13 +151,13 @@ namespace PMA.Game
         }
 
         #region Shuffle Deck
-        private void Shuffle(List<CardSO> deck)
+        private void Shuffle(List<PMA.Card.Card> deck)
         {
             System.Random r = new System.Random();
             for (int n = deck.Count - 1; n > 0; --n)
             {
                 int k = r.Next(n+1);
-                CardSO temp = deck[n];
+                PMA.Card.Card temp = deck[n];
                 deck[n] = deck[k];
                 deck[k] = temp;
             }

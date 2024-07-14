@@ -15,15 +15,18 @@ namespace PMA.Game
             ResetTime();
         }
 
-        public override int Score(List<CardSO> compareCard)
+        public override int Score(List<PMA.Card.Card> compareCard)
         { 
             if (IsCompare(compareCard))
             {
                 TimeSpan time = DateTime.Now - _startTime; 
-                ResetTime();
-                if (time.TotalSeconds > maxScore)
-                    return maxScore;
-                return (int)time.TotalSeconds;
+                var score = maxScore - (int)time.TotalSeconds;
+                
+                if (score > 0)
+                {
+                    ResetTime();
+                    return score;
+                }
             } 
             return 0;
         }

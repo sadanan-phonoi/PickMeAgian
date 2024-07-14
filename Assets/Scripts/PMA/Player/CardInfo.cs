@@ -1,20 +1,21 @@
 using PMA.Card;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PMA.Player
 {
     [System.Serializable]
     public class CardInfo
     {
-       [SerializeField] private CardSO cardSo;
+       [FormerlySerializedAs("cardSo")] [SerializeField] private Card.Card card;
        [SerializeField] private bool isCardSelected;
        
-       public CardSO CardSo => cardSo;
+       public Card.Card Card => card;
        public bool IsCardSelected => isCardSelected;
        
-       public CardInfo(CardSO cardSo)
+       public CardInfo(Card.Card card)
        {
-           this.cardSo = cardSo;
+           this.card = card;
        }
        public void SelectCard()
        {

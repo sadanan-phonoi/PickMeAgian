@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db0f59c660d3b224dbb1d70a7f29f59d, type: 3}
-  m_Name: GameMode 2
+  m_Name: Normal Stage 2
   m_EditorClassIdentifier: 
-  stageDifficulty: 0
-  cardSetting: {fileID: 11400000, guid: 51f5de2752f46154bbcdeee4d6fcd0cd, type: 2}
+  stageDifficulty: 1
+  cardSetting: {fileID: 11400000, guid: 562e174cae756bb49bc5c053bb66a585, type: 2}
   stageSetting:
-    stageName: Stage 2
-    cardValueX: 4
-    cardValueY: 4
-    cardCompareValue: 2
+    stageName: Normal II
+    cardValueX: 3
+    cardValueY: 3
+    cardCompareValue: 3
   scoreRule:
   - {fileID: 11400000, guid: 48a4d11636ab2cf45bcc6befe06c4806, type: 2}
+  - {fileID: 11400000, guid: d02daacd7c47fdc4cb7ca255662f8951, type: 2}
+  - {fileID: 11400000, guid: e59c8e8986a0cf9409b5286daca08e38, type: 2}

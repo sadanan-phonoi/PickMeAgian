@@ -9,10 +9,10 @@ namespace PMA.Game
         public static string WIN = "Win";
         public static string TURN = "Turn : ";
         public static string SCORE = "Score : ";
-        
+        public static string CARD_MATCHING = "Matching : ";
         public static string STAGE_DIFFICULTY = "Difficulty : ";
         public static string PLEASE_SELECT_STAGE = "Please select stage";
         public static string YOUR_SCORE = "Your Score : ";
-        public static string WARNING_STATE_SETTING = "StageSetting X Y CardCompareValue is more than cardSetting list";
+        public static string WARNING_STATE_SETTING = "CardSetting Must More : ";
     }
 }

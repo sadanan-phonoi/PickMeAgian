@@ -13,7 +13,7 @@ namespace PMA.Game
         {
             _combo = 0;
         }
-        public override int Score(List<CardSO> compareCard)
+        public override int Score(List<PMA.Card.Card> compareCard)
         {
             if (IsCompare(compareCard))
             {

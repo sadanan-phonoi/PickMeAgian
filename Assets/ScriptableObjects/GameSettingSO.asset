@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: GameSettingSO
   m_EditorClassIdentifier: 
   stageInfoList:
-  - {fileID: 11400000, guid: 3c7a339c6d6dbaa4e970733f4ab0d8c0, type: 2}
   - {fileID: 11400000, guid: adbe91de0ca453e43a99afa7f565733e, type: 2}
+  - {fileID: 11400000, guid: 3c7a339c6d6dbaa4e970733f4ab0d8c0, type: 2}
+  - {fileID: 11400000, guid: a191cf6145e096e49aa4834a36d4e473, type: 2}
+  - {fileID: 11400000, guid: 0079a3a02cf3bfe409b04f79a23431f3, type: 2}

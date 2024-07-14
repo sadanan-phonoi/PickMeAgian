@@ -12,5 +12,9 @@ namespace PMA.Menu
         {
             text.text = scoreRule.RuleName;
         }
+        public void Init(StageSetting stageSetting)
+        {
+            text.text = GameText.CARD_MATCHING+stageSetting.CardCompareValue;
+        }
     }
 }

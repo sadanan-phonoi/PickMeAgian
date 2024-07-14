@@ -9,9 +9,9 @@ namespace PMA.Game
         [SerializeField] private string ruleName;
         public string RuleName => ruleName;
         public abstract void Init();
-        public abstract int Score(List<CardSO> compareCard);
+        public abstract int Score(List<PMA.Card.Card> compareCard);
 
-        protected bool IsCompare(List<CardSO> compareCard)
+        protected bool IsCompare(List<PMA.Card.Card> compareCard)
         {
             for (int i = 0; i < compareCard.Count - 1; i++)
             {

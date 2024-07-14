@@ -27,6 +27,7 @@ namespace PMA.Player
         } 
         public void Init(GameStageSO stageSo,List<CardInfo> cardInfo)
         {
+            GameReset();
             this.gameStage = stageSo;
             this.currentCardInfo = cardInfo;
         } 
@@ -53,7 +54,7 @@ namespace PMA.Player
         {
             if (currentCardInfo.Contains(cardInfo))
             {
-                var cardList = currentCardInfo.FindAll(x=>x.CardSo.CardId == cardInfo.CardSo.CardId);
+                var cardList = currentCardInfo.FindAll(x=>x.Card.CardId == cardInfo.Card.CardId);
                 foreach (var card in cardList)
                 {
                     card.SelectCard();

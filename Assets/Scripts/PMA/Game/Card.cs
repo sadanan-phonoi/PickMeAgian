@@ -39,7 +39,7 @@ namespace PMA.Game
         public void OpenCard()
         { 
             _isCardSelected = true;
-            image.sprite = _cardInfo.CardSo.CardImage;
+            image.sprite = _cardInfo.Card.CardImage;
         } 
         public void CloseCard()
         {
