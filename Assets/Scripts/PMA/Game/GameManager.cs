@@ -9,7 +9,7 @@ namespace PMA.Game
         [SerializeField] private GameSettingSO gameSettingSo;
         [SerializeField] private GamePanel gamePanel;
         [SerializeField] private GamePlay gamePlay;
-        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioSource[] audioSource;
         
         private GameStageSO _stageSoSelected;
         private void Start()

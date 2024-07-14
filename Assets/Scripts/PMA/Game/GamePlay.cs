@@ -106,6 +106,8 @@ namespace PMA.Game
         private void OnClickCard(Card info)
         {
             _cardSelected.Add(info);
+            GameEvent.PlaySoundEvent(SoundKey.SOUND_FLIPPING);
+            
             if (_cardSelected.Count >= _gameStageSo.StageSetting.CardCompareValue)
             {
                 List<PMA.Card.Card> compareCard = new List<PMA.Card.Card>();
@@ -132,11 +134,7 @@ namespace PMA.Game
 
                 _cardSelected.Clear();
                 CheckGameEnd();
-            }
-            else
-            { 
-                GameEvent.PlaySoundEvent(SoundKey.SOUND_FLIPPING);
-            }
+            } 
              
         }
         

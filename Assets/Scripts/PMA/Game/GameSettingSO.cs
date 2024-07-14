@@ -12,7 +12,7 @@ namespace PMA.Game
         
         [SerializeField] private AudioControllerSO audioController;
         public AudioControllerSO AudioController => audioController;
-        public void Init(AudioSource audioSource)
+        public void Init(AudioSource[] audioSource)
         {
             audioController.Init(audioSource);
         }
