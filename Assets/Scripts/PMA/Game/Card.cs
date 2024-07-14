@@ -26,6 +26,7 @@ namespace PMA.Game
 
             if (info.IsCardSelected)
             {
+                this.gameObject.SetActive(true);
                 Disable(); 
             }
         }

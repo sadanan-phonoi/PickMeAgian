@@ -71,8 +71,8 @@ namespace PMA.Game
                 CardInfo cardInfo = new CardInfo(cardSo);
                 var card = Instantiate(cardPrefab, target);
                 card.Init(cardInfo, _gameStageSo.CardSetting.BackCard);
-                card.gameObject.SetActive(true);
                 card.OnCardClick += OnClickCard;
+                card.gameObject.SetActive(true);
                 _listOfCard.Add(card);
                 cardInfoList.Add(cardInfo);
             } 
