@@ -10,12 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b36701033b034bc459ccda6c18f9dee6, type: 3}
-  m_Name: GameSetting
+  m_Name: GameSettingSO
   m_EditorClassIdentifier: 
   stageInfoList:
-  - stageId: 1
-    difficultyLevel: 0
-    stage: {fileID: 11400000, guid: adbe91de0ca453e43a99afa7f565733e, type: 2}
-  - stageId: 2
-    difficultyLevel: 1
-    stage: {fileID: 11400000, guid: 3c7a339c6d6dbaa4e970733f4ab0d8c0, type: 2}
+  - {fileID: 11400000, guid: 3c7a339c6d6dbaa4e970733f4ab0d8c0, type: 2}
+  - {fileID: 11400000, guid: adbe91de0ca453e43a99afa7f565733e, type: 2}

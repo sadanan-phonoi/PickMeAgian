@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0f59c660d3b224dbb1d70a7f29f59d, type: 3}
   m_Name: New GameMode
   m_EditorClassIdentifier: 
-  gameSetting:
+  stageDifficulty: 1
+  cardSetting: {fileID: 11400000, guid: 51f5de2752f46154bbcdeee4d6fcd0cd, type: 2}
+  stageSetting:
+    stageName: Stage 1
     cardValueX: 2
     cardValueY: 2
     cardCompareValue: 2
-  cardSetting: {fileID: 11400000, guid: 51f5de2752f46154bbcdeee4d6fcd0cd, type: 2}
   scoreRule:
   - {fileID: 11400000, guid: 48a4d11636ab2cf45bcc6befe06c4806, type: 2}
   - {fileID: 11400000, guid: d02daacd7c47fdc4cb7ca255662f8951, type: 2}

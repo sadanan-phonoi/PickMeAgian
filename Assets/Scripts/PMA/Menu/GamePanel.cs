@@ -6,25 +6,30 @@ using UnityEngine.UI;
 
 namespace PMA.Menu
 {
+    [System.Serializable]
+    public class Panel
+    {
+        public GameEnum.EGamePanel panelType;
+        public GameObject panelObject;
+    }
     public class GamePanel : MonoBehaviour
     { 
         [SerializeField] private Panel[] panel; 
-        [Space] 
+        [Header("Dialog")] 
         [SerializeField] private DialogPopup dialogOk;
         [SerializeField] private DialogPopup dialogYesNo;
-        [Space]
+        [Header("State Select")] 
         [SerializeField] private StageSelectCtrl stageSelectCtrl;
         [Space]
         [SerializeField] private Button resumeButton;
 
-        public void Init(GameSetting gameSetting)
+        public void Init(GameSettingSO gameSettingSo)
         {
-            OpenMainMenu(gameSetting);
-            resumeButton.interactable = false;
+            OpenMainMenu(gameSettingSo); 
         }
-        private void OpenMainMenu(GameSetting gameSetting)
+        private void OpenMainMenu(GameSettingSO gameSettingSo)
         { 
-            stageSelectCtrl.RefreshUi(gameSetting);
+            stageSelectCtrl.Init(gameSettingSo);
             SetPanel(GameEnum.EGamePanel.STAGE_SELECT_PANEL);
         } 
         public void SetPanel(GameEnum.EGamePanel type)
@@ -38,6 +43,12 @@ namespace PMA.Menu
         {
             SetPanel((GameEnum.EGamePanel)panel);
         } 
+        public void ActiveButtonResume(bool isActive)
+        { 
+            resumeButton.interactable = isActive;
+        }
+
+        #region Dialog OK 
         public void ShowDialogOk(string header,string message, Action<EDialogType> callback = null)
         {
             if(dialogOk!=null)
@@ -48,7 +59,6 @@ namespace PMA.Menu
             if(dialogYesNo!=null)
                 dialogYesNo.Init(new DialogInfo(header,message, callback));
         }
-
         public void CloseDialog()
         {
             if(dialogOk!=null)
@@ -56,11 +66,6 @@ namespace PMA.Menu
             if(dialogYesNo!=null)
                 dialogYesNo.Close();
         }
-    }
-    [System.Serializable]
-    public class Panel
-    {
-        public GameEnum.EGamePanel panelType;
-        public GameObject panelObject;
+        #endregion
     }
 }

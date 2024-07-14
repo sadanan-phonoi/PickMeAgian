@@ -1,4 +1,3 @@
-using System;
 using PMA.Game;
 using TMPro;
 using UnityEngine;
@@ -11,13 +10,13 @@ namespace PMA.Menu
         [SerializeField] private TextMeshProUGUI text;
         [SerializeField] private Image selectedImage;
         
-        public delegate void OnButtonClickTab(GameStage gameStage); 
+        public delegate void OnButtonClickTab(GameStageSO gameStageSo); 
         public event OnButtonClickTab OnButtonClickEvent;  
 
-        private GameStage _info;
-        public void Init(GameStage gameStage)
+        private GameStageSO _info;
+        public void Init(GameStageSO gameStageSo)
         {
-            _info = gameStage;
+            _info = gameStageSo;
             text.text = _info.GetStageName;
             selectedImage.gameObject.SetActive(false);
         }

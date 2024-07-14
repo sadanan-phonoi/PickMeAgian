@@ -1,58 +1,75 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using PMA.Card;
+using PMA.Event;
 using PMA.Game;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace PMA.Player
 {
-    public static Player Instance { get; set; }
-    
-    [SerializeField] private GameStage stage;
-    [SerializeField] private List<CardSO> cardSO = new List<CardSO>();
-    [SerializeField] private List<int> cardSelectedId = new List<int>();
-    [SerializeField] private int score;
-    [SerializeField] private int turn; 
-    public GameStage Stage => stage;
-    public List<CardSO> CardSO => cardSO;
-    public List<int> CardSelectedId => cardSelectedId;
-    public int GetCardSelectedCount => cardSelectedId.Count;
-    public int Score => score;
-    public int Turn => turn; 
-    private void Awake()
+    public class Player : MonoBehaviour
     {
-        if (Instance != null)
+        public static Player Instance { get; set; }
+    
+        [SerializeField] private int score, turn; 
+        [SerializeField] private GameStageSO gameStage; 
+        [SerializeField] private List<CardInfo> currentCardInfo = new List<CardInfo>();   
+        public int Score => score;
+        public int Turn => turn; 
+        public GameStageSO GameStage => gameStage; 
+        public List<CardInfo> CurrentCardInfo => currentCardInfo;
+        private void Awake()
         {
-            Destroy(gameObject);
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+            }
+            Instance = this;
+            GameReset();
+        } 
+        public void Init(GameStageSO stageSo,List<CardInfo> cardInfo)
+        {
+            this.gameStage = stageSo;
+            this.currentCardInfo = cardInfo;
+        } 
+        public void GameReset()
+        {
+            gameStage = null; 
+            currentCardInfo.Clear();
+            score = 0;
+            turn = 0;
+            GameEvent.OnTurnIncrease?.Invoke(turn);
+            GameEvent.OnScoreChanged?.Invoke(score);
         }
-        Instance = this;
-    } 
-    public void Init(GameStage stage,List<CardSO> deck)
-    {
-        this.stage = stage;
-        cardSO = deck;
+        public void IncreaseTurn()
+        {
+            turn++;
+            GameEvent.OnTurnIncrease?.Invoke(turn);
+        }
+        public void IncreaseScore(int value)
+        {
+            score += value;
+            GameEvent.OnScoreChanged?.Invoke(score);
+        }
+        public void SetCardSelected(CardInfo cardInfo)
+        {
+            if (currentCardInfo.Contains(cardInfo))
+            {
+                var cardList = currentCardInfo.FindAll(x=>x.CardSo.CardId == cardInfo.CardSo.CardId);
+                foreach (var card in cardList)
+                {
+                    card.SelectCard();
+                }
+            }
+        }
+        public bool IsCardSelectedAll()
+        {
+            foreach (var cardInfo in currentCardInfo)
+            {
+                if (!cardInfo.IsCardSelected)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
-
-    public void GameReset()
-    {
-        stage = null;
-        cardSO.Clear();
-        cardSelectedId.Clear();
-        score = 0;
-        turn = 0;
-    }
-    public void IncreaseTurn()
-    {
-        turn++;
-    }
-    public void IncreaseScore(int value)
-    {
-        score += value;
-    }
-    public void SetCardSelectedId(int id)
-    {
-        cardSelectedId.Add(id);
-    }
-    
 }

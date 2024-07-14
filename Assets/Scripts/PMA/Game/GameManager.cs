@@ -1,4 +1,3 @@
-using PMA.Enum;
 using PMA.Event;
 using PMA.Menu;
 using UnityEngine;
@@ -7,29 +6,43 @@ namespace PMA.Game
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private GameSetting gameSetting;
+        [SerializeField] private GameSettingSO gameSettingSo;
         [SerializeField] private GamePanel gamePanel;
         [SerializeField] private GamePlay gamePlay;
 
-        private GameStage _stageSelected;
+        private GameStageSO _stageSoSelected;
         private void Start()
         {
-            gamePanel.Init(gameSetting);
-            GameEvent.OnStageSelected += OnStageSelected;
+            gamePanel.Init(gameSettingSo);
+            
+            GameEvent.OnStageSelected += SubscribeStageSelected;
+            GameEvent.OnGameStart += SubscribeGameStart;
+            GameEvent.OnGameEnd += SubscribeGameEnd;
         }
-        private void OnStageSelected(GameStage stageInfo)
+
+        #region GameEvent 
+        private void SubscribeStageSelected(GameStageSO stageSoInfo)
         {
-            _stageSelected = stageInfo; 
+            _stageSoSelected = stageSoInfo; 
+        } 
+        private void SubscribeGameStart()
+        {
+            gamePanel.ActiveButtonResume(true);
+        } 
+        private void SubscribeGameEnd()
+        {
+            gamePanel.ActiveButtonResume(false);
         }
+        #endregion
         
         public void OnButtonClick_GameStart()
         {
-            if (_stageSelected == null)
+            if (_stageSoSelected == null)
             {
                 gamePanel.ShowDialogOk(GameText.NOTICE,GameText.PLEASE_SELECT_STAGE);
                 return;
             }
-            gamePlay.Init(_stageSelected);
+            gamePlay.Init(_stageSoSelected);
         }
         public void OnButtonClick_GameResume()
         {
