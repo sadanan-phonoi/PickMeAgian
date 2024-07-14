@@ -39,28 +39,77 @@ namespace PMA.Game
         public void OpenCard()
         { 
             _isCardSelected = true;
-            image.sprite = _cardInfo.Card.CardImage;
+            StartFlip(true);
         } 
         public void CloseCard()
-        {
-            _isCardSelected = false;
-            StartCoroutine(CloseCardWithDelay(1f));
-        } 
-        public IEnumerator CloseCardWithDelay(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            image.sprite = _backCard;
-        } 
+        { 
+            StartCoroutine(WaitDelay(1, () =>
+            {
+                StartFlip(false);
+                _isCardSelected = false;
+            }));
+        }  
         public void Disable()
         { 
             Button button = GetComponent<Button>();
             button.interactable = false; 
-            StartCoroutine(DisableWithDelay(1f));
-        }
-        public IEnumerator DisableWithDelay(float delay)
+            StartCoroutine(WaitDelay(1, () => _isDisable = true));
+        }  
+        private IEnumerator WaitDelay(float delay, Action callback)
         {
             yield return new WaitForSeconds(delay);
-            image.color = new Color(0, 0, 0, 0);
-        } 
+            callback?.Invoke();
+        }
+
+        private void StartFlip(bool isOpen)
+        {
+            _isFlip = true; 
+            this.transform.localScale = new Vector3(-1, 1, 1); 
+
+            _callbackFlip = () =>
+            {
+                if(isOpen)
+                    image.sprite = _cardInfo.Card.CardImage;
+                else 
+                    image.sprite = _backCard;  
+            };
+        }
+        bool _isDisable = false;
+        bool _isFlip = false;
+        private Action _callbackFlip = null;
+        public void FixedUpdate()
+        {
+            if(_isDisable)
+            {
+               this.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+               
+               image.color = new Color(1, 1, 1, image.color.a - 0.1f);
+               
+               if(this.transform.localScale.x > 1.5f)
+               {
+                   this.transform.localScale = new Vector3(1, 1, 1);
+                   image.color = new Color(0, 0, 0, 0);
+                   _isDisable = false;
+               }
+            }
+
+            if (_isFlip)
+            {
+                var localScale = this.transform.localScale;
+                localScale = new Vector3(localScale.x + 0.1f, localScale.y, localScale.z);
+                this.transform.localScale = localScale;
+
+                if (this.transform.localScale.x > 0 && _callbackFlip!=null)
+                {
+                    _callbackFlip?.Invoke();
+                    _callbackFlip = null;
+                }
+                if(this.transform.localScale.x > 1)
+                {
+                    this.transform.localScale = new Vector3(1, 1, 1); 
+                    _isFlip = false;
+                }
+            }
+        }
     }
 }

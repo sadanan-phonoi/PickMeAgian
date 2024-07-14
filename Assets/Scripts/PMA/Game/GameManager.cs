@@ -15,6 +15,7 @@ namespace PMA.Game
         {
             gamePanel.Init(gameSettingSo);
             
+            SubscribeGameEnd();
             GameEvent.OnStageSelected += SubscribeStageSelected;
             GameEvent.OnGameStart += SubscribeGameStart;
             GameEvent.OnGameEnd += SubscribeGameEnd;
